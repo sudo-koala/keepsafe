@@ -22,22 +22,26 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.ralphmarondev.keepsafe.home.components.FeatureCard
 import com.ralphmarondev.keepsafe.home.model.Feature
-import com.ralphmarondev.keepsafe.ui.theme.KeepsafeTheme
+import com.ralphmarondev.keepsafe.navigation.Screens
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun HomeScreen() {
+fun HomeScreen(
+    navController: NavHostController
+) {
     val listOfFeatures = listOf(
         Feature(
             icon = Icons.Outlined.Info,
             text = "Family Information",
-            onClick = {}
+            onClick = {
+                navController.navigate(Screens.FamInfo)
+            }
         ),
         Feature(
             icon = Icons.Outlined.Star,
@@ -90,13 +94,5 @@ fun HomeScreen() {
                 FeatureCard(feature = listOfFeatures[it])
             }
         }
-    }
-}
-
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-private fun HomeScreenPreview() {
-    KeepsafeTheme {
-        HomeScreen()
     }
 }

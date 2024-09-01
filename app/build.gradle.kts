@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -66,4 +67,17 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    // icon-extended
+    implementation(libs.androidx.material.icons.extended.android)
+
+    // splash-screen
+    implementation(libs.androidx.core.splashscreen)
+
+    // for viewModel on composable
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+
+    // navigation [with type safe args]
+    implementation(libs.navigation.compose)
+    implementation(libs.kotlinx.serialization.json)
 }
