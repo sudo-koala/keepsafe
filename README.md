@@ -87,7 +87,7 @@ Keepsafe is licensed under the [MIT License](LICENSE.txt).
 For any questions or issues, please reach out:
 
 - **Email**: edaralphmaron@gmail.com
-- **GitHub**: [ralphmarondev](https://github.com/ralphmarondev)
+- **GitHub**: [Ralph Maron Eda](https://github.com/ralphmarondev)
 
 ---
 
