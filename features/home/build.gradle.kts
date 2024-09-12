@@ -1,11 +1,10 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
-    namespace = "com.ralphmarondev.navigation"
+    namespace = "com.ralphmarondev.home"
     compileSdk = 34
 
     defaultConfig {
@@ -47,8 +46,6 @@ android {
 dependencies {
 
     implementation(project(":core:ui:theme"))
-    implementation(project(":features:auth"))
-    implementation(project(":features:home"))
 
     // compose
     implementation(libs.androidx.core.ktx)
@@ -68,4 +65,7 @@ dependencies {
     // navigation
     implementation(libs.navigation.compose)
     implementation(libs.kotlinx.serialization.json)
+
+    // extended-icon
+    implementation(libs.androidx.material.icons.extended.android)
 }

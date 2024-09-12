@@ -38,7 +38,7 @@ import com.ralphmarondev.theme.KeepSafeTheme
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AuthScreen(
-    navController: NavHostController
+    onLoginSuccessful: () -> Unit
 ) {
     val viewModel = AuthViewModel()
     val selectedTab by viewModel.selectedTab.collectAsState()
@@ -117,7 +117,7 @@ fun AuthScreen(
 
                             when (selectedTab) {
                                 0 -> Login(
-                                    onLoginSuccessful = {},
+                                    onLoginSuccessful = onLoginSuccessful,
                                     snackbarState = snackbarState,
                                     modifier = Modifier
                                         .fillMaxWidth()
