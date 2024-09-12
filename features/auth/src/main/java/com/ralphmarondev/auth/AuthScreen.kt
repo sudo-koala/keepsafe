@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.ralphmarondev.auth.presentation.login.Login
+import com.ralphmarondev.auth.presentation.register.Register
 import com.ralphmarondev.theme.KeepSafeTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -123,11 +124,16 @@ fun AuthScreen(
                                         .padding(top = 4.dp)
                                 )
 
-                                1 -> Login(
-                                    onLoginSuccessful = {},
+                                1 -> Register(
+                                    onRegistrationSuccessful = {
+                                        viewModel.onSelectedTabIndexChange(
+                                            0
+                                        )
+                                    },
                                     snackbarState = snackbarState,
                                     modifier = Modifier
                                         .fillMaxWidth()
+                                        .padding(top = 4.dp)
                                 )
                             }
                         }
