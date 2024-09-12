@@ -5,6 +5,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.ralphmarondev.auth.AuthScreen
+import com.ralphmarondev.familyinfo.FamilyInfoScreen
 import com.ralphmarondev.home.HomeScreen
 import kotlinx.serialization.Serializable
 
@@ -14,6 +15,9 @@ class Screen {
 
     @Serializable
     object Home
+
+    @Serializable
+    object FamilyInfo
 }
 
 
@@ -23,7 +27,7 @@ fun AppNavigation() {
 
     NavHost(
         navController = navController,
-        startDestination = Screen.Auth
+        startDestination = Screen.Home
     ) {
         composable<Screen.Auth> {
             AuthScreen(
@@ -34,7 +38,19 @@ fun AppNavigation() {
             )
         }
         composable<Screen.Home> {
-            HomeScreen()
+            HomeScreen(
+                onFamilyInfo = {
+                    navController.navigate(Screen.FamilyInfo)
+                },
+                onFamilyPhotos = {}
+            )
+        }
+        composable<Screen.FamilyInfo> {
+            FamilyInfoScreen(
+                onBack = {
+                    navController.popBackStack()
+                }
+            )
         }
     }
 }

@@ -49,6 +49,7 @@ dependencies {
     implementation(project(":core:ui:theme"))
     implementation(project(":features:auth"))
     implementation(project(":features:home"))
+    implementation(project(":features:familyinfo"))
 
     // compose
     implementation(libs.androidx.core.ktx)

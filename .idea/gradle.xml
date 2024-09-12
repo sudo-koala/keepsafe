@@ -20,6 +20,7 @@
             <option value="$PROJECT_DIR$/core/utils" />
             <option value="$PROJECT_DIR$/features" />
             <option value="$PROJECT_DIR$/features/auth" />
+            <option value="$PROJECT_DIR$/features/familyinfo" />
             <option value="$PROJECT_DIR$/features/home" />
             <option value="$PROJECT_DIR$/navigation" />
           </set>

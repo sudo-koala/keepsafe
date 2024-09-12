@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.ralphmarondev.home"
+    namespace = "com.ralphmarondev.familyinfo"
     compileSdk = 34
 
     defaultConfig {
@@ -45,6 +45,7 @@ android {
 }
 
 dependencies {
+
 
     implementation(project(":core:ui:theme"))
 
