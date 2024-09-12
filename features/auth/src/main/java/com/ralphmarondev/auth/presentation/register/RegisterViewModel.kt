@@ -4,11 +4,15 @@ import android.util.Log
 import androidx.compose.material3.SnackbarHostState
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.ralphmarondev.application.KeepSafe
+import com.ralphmarondev.model.user.User
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class RegisterViewModel : ViewModel() {
+    private val dao = KeepSafe.database.dao()
+
     private val _fullName = MutableStateFlow("")
     val fullName: StateFlow<String> get() = _fullName
 
@@ -63,6 +67,14 @@ class RegisterViewModel : ViewModel() {
 
     private fun isRegistrationSuccessful(): Boolean {
         try {
+            val user = User(
+                fullName = _fullName.value,
+                username = _username.value,
+                password = _password.value
+            )
+            viewModelScope.launch {
+                dao.createNewUser(user)
+            }
             return true
         } catch (ex: Exception) {
             _response.value = "Registration Failed: ${ex.message}"

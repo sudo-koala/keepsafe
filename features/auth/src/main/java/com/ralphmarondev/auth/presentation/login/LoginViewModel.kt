@@ -1,13 +1,17 @@
 package com.ralphmarondev.auth.presentation.login
 
+import android.util.Log
 import androidx.compose.material3.SnackbarHostState
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.ralphmarondev.application.KeepSafe
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class LoginViewModel : ViewModel() {
+    private val dao = KeepSafe.database.dao()
+
     private val _username = MutableStateFlow("")
     val username: StateFlow<String> get() = _username
 
@@ -21,6 +25,7 @@ class LoginViewModel : ViewModel() {
     fun onPasswordValueChanged(value: String) {
         _password.value = value
     }
+
 
     fun onLogin(
         onLoginSuccessful: () -> Unit,
@@ -49,15 +54,27 @@ class LoginViewModel : ViewModel() {
             return
         }
 
-        // auth
-        if (_username.value == "root" && _password.value == "toor") {
-            onLoginSuccessful()
-        } else {
-            viewModelScope.launch {
+        viewModelScope.launch {
+            if (isUserExists()) {
+                onLoginSuccessful()
+            } else {
                 snackbarState.showSnackbar(
                     message = "Password for '${_username.value}' is incorrect."
                 )
             }
+        }
+    }
+
+    private suspend fun isUserExists(): Boolean {
+        return try {
+            dao.userExists(
+                username = _username.value,
+                password = _password.value
+            )
+
+        } catch (e: Exception) {
+            Log.d("AUTH", "Login Error: ${e.message}")
+            false
         }
     }
 }

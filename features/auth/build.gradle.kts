@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.serialization)
+    kotlin("kapt")
 }
 
 android {
@@ -47,6 +48,9 @@ android {
 dependencies {
 
     implementation(project(":core:ui:theme"))
+    implementation(project(":core:application"))
+    implementation(project(":core:model"))
+    implementation(project(":core:data:room_db"))
 
     // compose
     implementation(libs.androidx.core.ktx)
@@ -69,4 +73,11 @@ dependencies {
 
     // extended-icon
     implementation(libs.androidx.material.icons.extended.android)
+
+    // room database
+    implementation(libs.androidx.room.common)
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    annotationProcessor(libs.androidx.room.compiler)
+    kapt(libs.androidx.room.compiler)
 }

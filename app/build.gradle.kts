@@ -54,6 +54,7 @@ dependencies {
 
     implementation(project(":core:ui:theme"))
     implementation(project(":navigation"))
+    implementation(project(":core:application"))
 
     // compose
     implementation(libs.androidx.core.ktx)

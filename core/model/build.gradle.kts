@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.ralphmarondev.room_db"
+    namespace = "com.ralphmarondev.model"
     compileSdk = 34
 
     defaultConfig {
@@ -35,7 +35,7 @@ android {
 
 dependencies {
 
-    implementation(project(":core:model"))
+    implementation(project(":core:utils"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
